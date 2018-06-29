@@ -6,3 +6,14 @@ C:\Users\a447119040\Desktop\Travel Information\Travel Information\bin\Debug\Trav
 C:\Users\a447119040\Desktop\Travel Information\Travel Information\bin\Debug\Travel Information.pdb
 C:\Users\a447119040\Desktop\Travel Information\Travel Information\obj\x86\Debug\Travel Information.exe
 C:\Users\a447119040\Desktop\Travel Information\Travel Information\obj\x86\Debug\Travel Information.pdb
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel Information.exe
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel Information.pdb
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel Information.csprojResolveAssemblyReference.cache
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel_Information.Frm_Login.resources
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel_Information.Frm_Register.resources
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel_Information.Main.resources
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel_Information.Properties.Resources.resources
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\obj\x86\Debug\Travel Information.csproj.GenerateResource.Cache
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\bin\Debug\Travel Information.exe
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\bin\Debug\Travel Information.pdb
+C:\Users\a447119040\Desktop\上课\Travel Information\Travel Information\bin\Debug\MySql.Data.dll

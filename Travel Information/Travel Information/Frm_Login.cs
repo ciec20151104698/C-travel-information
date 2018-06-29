@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 using System.Data.OleDb;
 
@@ -30,15 +31,26 @@ namespace Travel_Information
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string connectionSrting = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\a447119040\\Desktop\\test.accdb";
-            OleDbConnection connection = new OleDbConnection(connectionSrting);
+            //string connectionSrting = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\a447119040\\Desktop\\test.accdb";
+            //OleDbConnection connection = new OleDbConnection(connectionSrting);
+            //connection.Open();
+            //OleDbCommand command_login = new OleDbCommand("select * from tb_user", connection);
+            //OleDbDataReader login_reader = command_login.ExecuteReader();
+
+            string connectionString = "Data Source=localhost;port=3306;Initial Catalog=traveltest;User Id=root;password=123456;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string sql = "select * from user_info";
             connection.Open();
-            OleDbCommand command_login = new OleDbCommand("select * from tb_user", connection);
-            OleDbDataReader login_reader = command_login.ExecuteReader();
-            while (login_reader.Read())
+            MySqlCommand login_command = new MySqlCommand(sql, connection);
+            MySqlDataReader login_reader = login_command.ExecuteReader();
+
+            MessageBox.Show(login_reader["user_id"].ToString());
+
+
+            /*while (login_reader.Read())
             {
-                string username = login_reader["username"].ToString();
-                string password = login_reader["password"].ToString();
+                string username = login_reader["user_id"].ToString();
+                string password = login_reader["user_pwd"].ToString();
                 if (txt_username.Text == username && txt_password.Text == password)
                 {
                     Main main = new Main();
@@ -59,7 +71,7 @@ namespace Travel_Information
                         rg.Show();
                     }                    
                 }
-            }
+            }*/
             
         }
 

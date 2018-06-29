@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace Travel_Information
 {
@@ -24,21 +25,21 @@ namespace Travel_Information
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            string user_connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\a447119040\\Desktop\\test.accdb";
-            OleDbConnection user_connection = new OleDbConnection(user_connectionString);
-            user_connection.Open();
+            //string user_connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\a447119040\\Desktop\\test.accdb";
+            //OleDbConnection user_connection = new OleDbConnection(user_connectionString);
+            //user_connection.Open();
 
             string rg_username = txt_rgusername.Text;
             string rg_password = txt_rgpassword.Text;
             string rg_repassword = txt_rgrepassword.Text;
-            string rg_retelnumber = txt_rgtelnumber.Text;
+            string rg_telnumber = txt_rgtelnumber.Text;
 
             
             if (rg_password == rg_repassword)
             {
-                string user_add_command = "INSERT INTO tb_user VALUES('"+ rg_username +" ', '"+ rg_password +"')";
-                OleDbCommand user_add = new OleDbCommand(user_add_command,user_connection);
-                user_add.ExecuteNonQuery();
+                MySQLConn con = new MySQLConn();
+                string sql = "insert into user_info(user_id,user_pwd,user_phone) values('" + rg_username + " ', '" + rg_password + "', '" + rg_telnumber + "')";
+                con.ExecuteUpdate(sql);
             }
             else {
                 MessageBox.Show("两次密码输入不一致,请重新输入");
@@ -47,7 +48,7 @@ namespace Travel_Information
 
         private void Frm_Register_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
