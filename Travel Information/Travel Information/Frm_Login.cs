@@ -36,15 +36,41 @@ namespace Travel_Information
             //connection.Open();
             //OleDbCommand command_login = new OleDbCommand("select * from tb_user", connection);
             //OleDbDataReader login_reader = command_login.ExecuteReader();
+            String username = txt_username.Text;
+            String password = txt_password.Text;
+            if (username == "" || password == "")
+            {
+                MessageBox.Show("用户名或密码不能为空");
+            }
+            else {
+                string connectionString = "server=localhost;port=3306;database=traveltest;user=root;password=123456;";
 
-            string connectionString = "Data Source=localhost;port=3306;Initial Catalog=traveltest;User Id=root;password=123456;";
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            string sql = "select * from user_info";
-            connection.Open();
-            MySqlCommand login_command = new MySqlCommand(sql, connection);
-            MySqlDataReader login_reader = login_command.ExecuteReader();
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
 
-            MessageBox.Show(login_reader["user_id"].ToString());
+
+                string sql = "select * from user_info where user_id='" + username + " ' and user_pwd='" + password + "'";
+                //MySqlCommand login_command = new MySqlCommand(sql, connection);
+                MySqlCommand login_command = new MySqlCommand(sql, connection);
+
+                login_command.CommandType = CommandType.Text;
+
+                MySqlDataReader login_reader;
+
+                login_reader = login_command.ExecuteReader();
+                if (login_reader.Read())
+                {
+                    MessageBox.Show("登陆成功", "提示");
+                }
+                else {
+                    MessageBox.Show("用户名或密码错误","提示");
+                    return;
+                }
+         
+            }
+            
+            
+            
 
 
             /*while (login_reader.Read())
@@ -72,7 +98,7 @@ namespace Travel_Information
                     }                    
                 }
             }*/
-            
+
         }
 
         private void btn_register_Click(object sender, EventArgs e)
