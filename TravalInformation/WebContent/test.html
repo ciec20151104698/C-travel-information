@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+#allmap {
+	height: 500px;
+	width: 100%;
+}
+
+#control {
+	width: 100%;
+}
+</style>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=6c497f51c06477544e5fa6e9bd68f7c3"></script>
+<title>设置线、面可编辑</title>
+</head>
+<body>
+	<div id="allmap"></div>
+	<div id="control">
+
+		<button onclick="dian();">返回坐标值</button>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+	map.enableScrollWheelZoom();
+
+	var p = []; //用来存储折线的点
+	var polyline;
+	var doneDraw = 0; //判断是否绘制折线结束
+
+	map.addEventListener("click", function(e) {
+		//当鼠标单击时
+		if (doneDraw == 0) {
+			//判断是否绘制曲线完毕
+			p.push(new BMap.Point(e.point.lng, e.point.lat)) //存储曲线上每个点的经纬度
+			if (polyline) {
+				polyline.setPath(p);
+			}
+			//如果曲线存在，则获取折线上的点
+			else {
+				polyline = new BMap.Polyline(p);
+			}
+			//如果折线不存在，就增加此点
+			if (p.length < 2) {
+				return;
+			}
+			//当折线上的点只有一个时，不绘制
+			map.addOverlay(polyline); //绘制曲线
+		}
+	});
+	function dian() {
+		alert(p);
+	}
+</script>

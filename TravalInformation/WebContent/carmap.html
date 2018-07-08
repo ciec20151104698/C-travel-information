@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+#l-map {
+	height: 300px;
+	width: 100%;
+}
+
+#r-result, #r-result table {
+	width: 100%;
+}
+</style>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=6c497f51c06477544e5fa6e9bd68f7c3"></script>
+<title>起终点可拖拽的驾车导航</title>
+</head>
+<body>
+	<div id="l-map"></div>
+	<div id="r-result"></div>
+	<p>
+		输入所在城市：<input type="text" id="island"> <input type="button"
+			onclick="run()" value="确认">
+	</p>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+
+	
+	//map.centerAndZoom(new BMap.Point(116.404, 39.915), 12);
+	
+	
+	
+	function run() {
+		var map = new BMap.Map("l-map");
+		var getisland = document.getElementById('island');
+		var m = getisland.value;
+		map.centerAndZoom(m, 12);
+		var transit = new BMap.DrivingRoute(map, {
+			renderOptions : {
+				map : map,
+				panel : "r-result",
+				enableDragging : true
+			//起终点可进行拖拽
+			},
+		});
+		transit.search(m,m);
+
+	}
+</script>
