@@ -60,7 +60,9 @@ namespace Travel_Information
                 login_reader = login_command.ExecuteReader();
                 if (login_reader.Read())
                 {
-                    MessageBox.Show("登陆成功", "提示");
+                    //MessageBox.Show("登陆成功", "提示");
+                    Main frmmain = new Main(username);
+                    frmmain.Show();
                 }
                 else {
                     MessageBox.Show("用户名或密码错误","提示");
